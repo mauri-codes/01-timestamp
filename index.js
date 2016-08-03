@@ -40,8 +40,13 @@ app.get("/:url_q", function(request, response){
 	var NumberDate;
 	if(isNaN(url)){
 		var x = Date.parse(url);
-		NumberDate = x/1000;
-		StringDate = url;
+		if(isNaN(x)){
+			StringDate = null;
+			NumberDate = null;
+		}else{
+			NumberDate = x/1000;
+			StringDate = url;
+		}
 	}
 	else{
 		NumberDate = url;
